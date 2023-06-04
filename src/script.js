@@ -75,6 +75,7 @@ const programmingLanguages = [
     generatePuzzle();
     document.getElementById("guess").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
+        event.preventDefault();
         checkGuess();
       }
     });
