@@ -291,6 +291,7 @@ const programmingLanguages = [
     } else if (attempts === 5) {
       document.getElementById("result").textContent = "Sorry, you ran out of attempts. The correct answer was " + currentLanguage.name + ".";
       document.getElementById("result").style.color = "red";
+      document.getElementById("attempts").textContent = "Remaining attempts: 0";
       document.getElementById("guess").disabled = true;
       document.getElementById("submit").disabled = true;
     } else {
