@@ -41,7 +41,7 @@ body {
   #incorrect-guesses {
     font-size: 16px;
     margin-bottom: 10px;
-    color: red;
+    color: rgb(136, 0, 255);
   }
   
   #result {
