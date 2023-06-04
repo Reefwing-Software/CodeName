@@ -11,13 +11,13 @@ const programmingLanguages = [
         "This programming language was created in the early 1990s and is widely used for web development.",
         "It is a dynamic and interpreted language.",
         "It has a rich ecosystem of libraries and frameworks.",
-        "JavaScript is often used for client-side scripting.",
+        "It is often used for client-side scripting.",
         "It supports object-oriented, functional, and imperative programming paradigms.",
-        "JavaScript is the backbone of modern web applications.",
+        "It is the backbone of modern web applications.",
         "It has built-in support for manipulating HTML and CSS.",
-        "JavaScript code can be run in both browsers and server-side environments.",
+        "Its code can be run in both browsers and server-side environments.",
         "It has various frameworks like React, Angular, and Vue for building user interfaces.",
-        "JavaScript is the most popular programming language according to numerous surveys."
+        "It is the most popular programming language according to numerous surveys."
       ]
     },
     {
@@ -26,13 +26,13 @@ const programmingLanguages = [
         "This programming language emphasizes code readability and simplicity.",
         "It is often used for scientific computing and data analysis.",
         "It uses indentation for block structures instead of braces.",
-        "Python is known for its extensive standard library.",
+        "It is known for its extensive standard library.",
         "It supports multiple programming paradigms including object-oriented and functional programming.",
-        "Python has a large and active community of developers.",
+        "It has a large and active community of developers.",
         "It is used in various domains such as web development, machine learning, and automation.",
-        "Python is the language of choice for many data scientists and AI researchers.",
+        "It is the language of choice for many data scientists and AI researchers.",
         "It has a clean and expressive syntax.",
-        "Python's popularity has been steadily growing in recent years."
+        "It's popularity has been steadily growing in recent years."
       ]
     },
     {
@@ -175,10 +175,19 @@ const programmingLanguages = [
     const randomIndex = Math.floor(Math.random() * programmingLanguages.length);
     return programmingLanguages[randomIndex];
   }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
   
   function getClue(clueNumber) {
     if (clueNumber <= currentLanguage.clues.length) {
-      return currentLanguage.clues[clueNumber - 1];
+      const shuffledClues = shuffleArray(currentLanguage.clues.slice());
+      return shuffledClues[clueNumber - 1];
     } else {
       return "No more clues available.";
     }
