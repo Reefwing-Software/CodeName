@@ -234,13 +234,17 @@ const programmingLanguages = [
   ];
   
   let currentLanguage;
+  let cluesRemaining;
   let attempts = 0;
+  let cluesShown = [];
   let incorrectGuesses = [];
   
   function generatePuzzle() {
     attempts = 0;
     incorrectGuesses = [];
     currentLanguage = getRandomLanguage();
+    cluesRemaining = currentLanguage.clues.slice();
+    cluesShown = [];
     document.getElementById("clue").textContent = "Clue 1: " + getClue(1);
     document.getElementById("attempts").textContent = "Remaining attempts: " + (5 - attempts);
     document.getElementById("result").textContent = "";
@@ -252,21 +256,27 @@ const programmingLanguages = [
     return programmingLanguages[randomIndex];
   }
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-  
-  function getClue(clueNumber) {
-    if (clueNumber <= currentLanguage.clues.length) {
-      const shuffledClues = shuffleArray(currentLanguage.clues.slice());
-      return shuffledClues[clueNumber - 1];
-    } else {
+  function getClue() {
+    if (cluesRemaining.length === 0) {
       return "No more clues available.";
     }
+  
+    const randomIndex = Math.floor(Math.random() * cluesRemaining.length);
+    const clue = cluesRemaining[randomIndex];
+    cluesRemaining.splice(randomIndex, 1);
+    cluesShown.push(clue);
+    return clue;
+  }
+  
+  function showNextClue() {
+    if (attempts >= 5) {
+      return;
+    }
+  
+    const clue = getClue();
+    attempts++;
+    document.getElementById("clue").textContent = "Clue " + (attempts + 1) + ": " + clue;
+    document.getElementById("attempts").textContent = "Remaining attempts: " + (5 - attempts);
   }
   
   function checkGuess() {
