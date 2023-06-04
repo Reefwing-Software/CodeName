@@ -287,10 +287,12 @@ const programmingLanguages = [
       document.getElementById("result").textContent = "Congratulations! You guessed it correctly.";
       document.getElementById("result").style.color = "green";
       document.getElementById("guess").disabled = true;
+      document.getElementById("submit").disabled = true;
     } else if (attempts === 5) {
       document.getElementById("result").textContent = "Sorry, you ran out of attempts. The correct answer was " + currentLanguage.name + ".";
       document.getElementById("result").style.color = "red";
       document.getElementById("guess").disabled = true;
+      document.getElementById("submit").disabled = true;
     } else {
       document.getElementById("result").textContent = "Wrong guess. Try again.";
       document.getElementById("result").style.color = "red";
