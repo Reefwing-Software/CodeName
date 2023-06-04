@@ -66,5 +66,12 @@ const programmingLanguages = [
     document.getElementById("guess").value = "";
   }
   
-  window.onload = generatePuzzle;
+  window.onload = function () {
+    generatePuzzle();
+    document.getElementById("guess").addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        checkGuess();
+      }
+    });
+  };
   
