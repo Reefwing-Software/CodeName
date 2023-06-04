@@ -8,18 +8,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CodeName</title>
+  <title>CodeName Guesser</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>CodeName</h1>
+  <h1>CodeName Guesser</h1>
+  <div id="puzzle">
     <p id="clue"></p>
     <p id="attempts"></p>
+    <p id="incorrect-guesses"></p>
+    <p id="result"></p>
     <input type="text" id="guess" placeholder="Enter your guess">
     <button onclick="checkGuess()">Submit</button>
-    <p id="result"></p>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
