@@ -19,16 +19,13 @@ const programmingLanguages = [
   
   let currentLanguage;
   let attempts = 0;
-  let incorrectGuesses = [];
   
   function generatePuzzle() {
     attempts = 0;
-    incorrectGuesses = [];
     currentLanguage = getRandomLanguage();
     document.getElementById("clue").textContent = "Clue 1: " + getClue(1);
     document.getElementById("attempts").textContent = "Remaining attempts: " + (5 - attempts);
     document.getElementById("result").textContent = "";
-    document.getElementById("incorrect-guesses").textContent = "";
   }
   
   function getRandomLanguage() {
@@ -60,12 +57,10 @@ const programmingLanguages = [
       document.getElementById("result").style.color = "red";
       document.getElementById("guess").disabled = true;
     } else {
-      incorrectGuesses.push(guess);
       document.getElementById("result").textContent = "Wrong guess. Try again.";
       document.getElementById("result").style.color = "red";
       document.getElementById("attempts").textContent = "Remaining attempts: " + (5 - attempts);
       document.getElementById("clue").textContent = "Clue " + (attempts + 1) + ": " + getClue(attempts + 1);
-      document.getElementById("incorrect-guesses").textContent = "Incorrect guesses: " + incorrectGuesses.join(", ");
     }
   
     document.getElementById("guess").value = "";
