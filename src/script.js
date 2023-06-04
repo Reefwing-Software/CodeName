@@ -5,16 +5,23 @@
 
 // script.js
 const programmingLanguages = [
-    "JavaScript",
-    "Python",
-    "Java",
-    "C++",
-    "Ruby",
-    "Go",
-    "Swift",
-    "Rust",
-    "TypeScript",
-    "PHP"
+    {
+      name: "JavaScript",
+      clues: [
+        "This programming language was created in the early 1990s and is widely used for web development.",
+        "It is a dynamic and interpreted language.",
+        "It has a rich ecosystem of libraries and frameworks."
+      ]
+    },
+    {
+      name: "Python",
+      clues: [
+        "This programming language emphasizes code readability and simplicity.",
+        "It is often used for scientific computing and data analysis.",
+        "It uses indentation for block structures instead of braces."
+      ]
+    },
+    // Add more programming languages with their respective clues
   ];
   
   let currentLanguage;
@@ -34,13 +41,11 @@ const programmingLanguages = [
   }
   
   function getClue(clueNumber) {
-    // Add more clues for each programming language
-    switch (clueNumber) {
-      case 1:
-        return "This programming language was created in the early 1990s and is widely used for web development.";
-      // Add more cases for additional clues
-      default:
-        return "No more clues available.";
+    const currentClues = currentLanguage.clues;
+    if (clueNumber <= currentClues.length) {
+      return currentClues[clueNumber - 1];
+    } else {
+      return "No more clues available.";
     }
   }
   
@@ -48,12 +53,12 @@ const programmingLanguages = [
     const guess = document.getElementById("guess").value;
     attempts++;
   
-    if (guess.toLowerCase() === currentLanguage.toLowerCase()) {
+    if (guess.toLowerCase() === currentLanguage.name.toLowerCase()) {
       document.getElementById("result").textContent = "Congratulations! You guessed it correctly.";
       document.getElementById("result").style.color = "green";
       document.getElementById("guess").disabled = true;
     } else if (attempts === 5) {
-      document.getElementById("result").textContent = "Sorry, you ran out of attempts. The correct answer was " + currentLanguage + ".";
+      document.getElementById("result").textContent = "Sorry, you ran out of attempts. The correct answer was " + currentLanguage.name + ".";
       document.getElementById("result").style.color = "red";
       document.getElementById("guess").disabled = true;
     } else {
