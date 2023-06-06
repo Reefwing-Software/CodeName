@@ -102,10 +102,20 @@ body {
     font-weight: bold;
   }
   
-  button {
+  button#submit {
     padding: 5px 10px;
     font-size: 16px;
     background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button#help {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #2196f3;
     color: white;
     border: none;
     border-radius: 4px;
