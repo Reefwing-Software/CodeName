@@ -312,8 +312,8 @@ function displayHelpModal() {
   const helpContent = document.getElementById("helpContent");
   const closeBtn = document.getElementsByClassName("close")[0];
 
-  // Fetch the README.md file content
-  fetch('README.md')
+  // Fetch the README.html file content
+  fetch('README.html')
     .then(response => response.text())
     .then(data => {
       // Display the content in the modal
