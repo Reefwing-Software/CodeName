@@ -31,7 +31,17 @@
     <p id="result"></p>
     <input type="text" id="guess" placeholder="Enter your guess">
     <button onclick="checkGuess()">Submit</button>
+    <button id="help">Help</button>
     <p>Number of Visitors: <span id="visitorCount">0</span></p>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3>CodeName - Help</h3>
+      <div id="helpContent"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>

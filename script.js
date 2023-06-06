@@ -305,6 +305,39 @@ const programmingLanguages = [
   
     document.getElementById("guess").value = "";
   }
+
+  // Function to display the modal with help content
+function displayHelpModal() {
+  const modal = document.getElementById("modal");
+  const helpContent = document.getElementById("helpContent");
+  const closeBtn = document.getElementsByClassName("close")[0];
+
+  // Fetch the README.md file content
+  fetch('README.md')
+    .then(response => response.text())
+    .then(data => {
+      // Display the content in the modal
+      helpContent.innerHTML = marked(data);
+      modal.style.display = "block";
+    })
+    .catch(error => {
+      // Display an error message if unable to fetch the file
+      helpContent.innerHTML = "<p>Error loading help content.</p>";
+      modal.style.display = "block";
+    });
+
+  // Close the modal when the close button is clicked
+  closeBtn.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // Close the modal when the user clicks outside the modal content
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+}
   
   window.onload = function () {
     generatePuzzle();
@@ -316,9 +349,12 @@ const programmingLanguages = [
 
     // Visitor tracking
     let visitorCount = localStorage.getItem("visitorCount") || 0;
-    
+
     visitorCount++;
     localStorage.setItem("visitorCount", visitorCount);
     document.getElementById("visitorCount").textContent = visitorCount;
   };
+
+  // Event listener for the Help button
+document.getElementById("help").addEventListener("click", displayHelpModal);
   
