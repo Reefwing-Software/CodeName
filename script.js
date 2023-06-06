@@ -307,40 +307,34 @@ const programmingLanguages = [
   }
 
   // Function to display the modal with help content
-function displayHelpModal() {
-  const modal = document.getElementById("modal");
-  const helpContent = document.getElementById("helpContent");
-  const closeBtn = document.getElementsByClassName("close")[0];
+  function displayHelpModal() {
+    const modal = document.getElementById("modal");
+    const helpContent = document.getElementById("helpContent");
+    const closeBtn = document.getElementsByClassName("close")[0];
 
-  // Fetch the README.html file content
-  fetch('README.html')
-    .then(response => response.text())
-    .then(data => {
-      // Display the content in the modal
-      helpContent.innerHTML = marked(data);
-      modal.style.display = "block";
-    })
-    .catch(error => {
-      // Display an error message if unable to fetch the file
-      helpContent.innerHTML = "<p>Error loading help content.</p>";
-      modal.style.display = "block";
-    });
+    // Set the source of the iframe to the README.html file
+    helpContent.src = "README.html";
 
-  // Close the modal when the close button is clicked
-  closeBtn.onclick = function () {
-    modal.style.display = "none";
-  };
+    // Display the modal
+    modal.style.display = "block";
 
-  // Close the modal when the user clicks outside the modal content
-  window.onclick = function (event) {
-    if (event.target == modal) {
+    // Close the modal when the close button is clicked
+    closeBtn.onclick = function () {
       modal.style.display = "none";
-    }
-  };
-}
+    };
+
+    // Close the modal when the user clicks outside the modal content
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+  }
   
   window.onload = function () {
     generatePuzzle();
+    // Event listener for the Help button
+    document.getElementById("help").addEventListener("click", displayHelpModal);  
     document.getElementById("guess").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         checkGuess();
@@ -355,6 +349,5 @@ function displayHelpModal() {
     document.getElementById("visitorCount").textContent = visitorCount;
   };
 
-  // Event listener for the Help button
-document.getElementById("help").addEventListener("click", displayHelpModal);
+  
   
